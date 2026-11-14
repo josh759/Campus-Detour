@@ -337,3 +337,22 @@ code {
   stroke: white;
   stroke-width: 3;
 }
+
+.route-line.detour {
+  stroke: #f59e0b;
+}
+
+.closure-marker path {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.closure-outline {
+  stroke: white;
+  stroke-width: 10;
+}
+
+.closure-cross {
+  stroke: #c5161d;
+  stroke-width: 5;
+}

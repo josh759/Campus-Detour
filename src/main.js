@@ -27,13 +27,14 @@ document.querySelector('#app').innerHTML = `
 let isClosed = false
 
 function updateRoute() {
+  const closedEdgeIds = isClosed ? ['c_d'] : []
   const route = getRoute(
     'union',
     'library',
-    isClosed ? ['c_d'] : []
+    closedEdgeIds
   )
 
-  renderMap(document.querySelector('#map'), route)
+  renderMap(document.querySelector('#map'), route, closedEdgeIds)
   document.querySelector('#route-status').textContent =
     isClosed ? 'Detour shown' : 'Usual route shown'
 }
