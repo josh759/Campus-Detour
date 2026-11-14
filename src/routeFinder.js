@@ -30,7 +30,7 @@ export function mountRouteFinder(container, onRouteChange) {
 
         <label for="closure-toggle">
           <input id="closure-toggle" type="checkbox">
-          Apply the agreed path closure
+          Apply the demo path closure
         </label>
 
         <button type="submit">Find Route</button>
@@ -38,11 +38,15 @@ export function mountRouteFinder(container, onRouteChange) {
       </form>
 
       <section id="route-details" class="route-details" hidden aria-live="polite">
-        <h3>Route details</h3>
-        <p>Destination: <span id="detail-destination"></span></p>
-        <p>Approximate distance: <span id="detail-distance"></span></p>
-        <p>Approximate walking time: <span id="detail-time"></span></p>
-        <p id="detail-closure"></p>
+        <h3>Demo route estimate</h3>
+        <dl class="route-details-list">
+          <div><dt>Start</dt><dd id="detail-start"></dd></div>
+          <div><dt>Destination</dt><dd id="detail-destination"></dd></div>
+          <div><dt>Estimated distance</dt><dd id="detail-distance"></dd></div>
+          <div><dt>Estimated walking time</dt><dd id="detail-time"></dd></div>
+          <div><dt>Demo closure</dt><dd id="detail-closure"></dd></div>
+        </dl>
+        <p class="route-disclaimer">Routes and distances are demo estimates, not live closure information or verified accessible routes.</p>
         <button id="reset-route" type="button">Reset</button>
       </section>
       </section>
@@ -54,6 +58,7 @@ export function mountRouteFinder(container, onRouteChange) {
   const message = container.querySelector('#route-message')
   const closureToggle = container.querySelector('#closure-toggle')
   const routeDetails = container.querySelector('#route-details')
+  const detailStart = container.querySelector('#detail-start')
   const detailDestination = container.querySelector('#detail-destination')
   const detailDistance = container.querySelector('#detail-distance')
   const detailTime = container.querySelector('#detail-time')
@@ -84,14 +89,15 @@ export function mountRouteFinder(container, onRouteChange) {
 
     hasRoute = true
     onRouteChange(result, closedEdgeIds)
-    message.textContent = `Route found: ${result.meters} meters.`
+    message.textContent = 'Demo route estimate ready.'
     routeDetails.removeAttribute('hidden')
+    detailStart.textContent = start.options[start.selectedIndex].text
     detailDestination.textContent = destination.options[destination.selectedIndex].text
     detailDistance.textContent = `${result.meters} meters`
     const walkingSpeedMetersPerSecond = 1.4
     const minutes = Math.ceil(result.meters / (walkingSpeedMetersPerSecond * 60))
     detailTime.textContent = `~${minutes} minutes (assuming 1.4 m/s)`
-    detailClosure.textContent = closureToggle.checked ? 'The agreed path closure is applied.' : 'The agreed path closure is not applied.'
+    detailClosure.textContent = closureToggle.checked ? 'Applied' : 'Not applied'
   }
 
   form.addEventListener('submit', (event) => {
