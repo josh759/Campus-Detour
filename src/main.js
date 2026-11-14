@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import './style.css'
 // import { getRoute } from './routes.js'
 // import { renderMap } from './map.js'
@@ -12,9 +13,11 @@
 //   getRoute('union', 'library')
 // )
 
+=======
+>>>>>>> origin/main
 import './style.css'
-import { getRoute } from './routes.js'
 import { renderMap } from './map.js'
+import { mountRouteFinder } from './routeFinder.js'
 
 const places = [
   ['union', 'University Union'],
@@ -47,6 +50,7 @@ const options = (selected) =>
 
 document.querySelector('#app').innerHTML = `
   <h1>Campus Detour</h1>
+<<<<<<< HEAD
 
   <div class="menus">
     <label>
@@ -73,6 +77,9 @@ document.querySelector('#app').innerHTML = `
     </div>
   </div>
 
+=======
+  <div id="route-finder"></div>
+>>>>>>> origin/main
   <div id="map"></div>
 
   <section class="trips">
@@ -81,6 +88,7 @@ document.querySelector('#app').innerHTML = `
   </section>
 `
 
+<<<<<<< HEAD
 let isClosed = false
 
 const startEl = document.querySelector('#start')
@@ -155,6 +163,10 @@ document.querySelector('#closure').addEventListener('click', () => {
       ? 'Reopen path near The Beach'
       : 'Close path near The Beach'
   updateRoute()
+=======
+const map = document.querySelector('#map')
+renderMap(map, { nodes: [] }, [])
+mountRouteFinder(document.querySelector('#route-finder'), (route, closedEdgeIds) => {
+  renderMap(map, route, closedEdgeIds)
+>>>>>>> origin/main
 })
-
-updateRoute()
