@@ -294,3 +294,46 @@ code {
     border-right-color: var(--border);
   }
 }
+
+
+.campus-map {
+  position: relative;
+  width: 100%;
+  max-width: 1344px;
+  aspect-ratio: 1344 / 630;
+}
+
+.campus-map img,
+.campus-map svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.campus-map svg {
+  overflow: visible;
+}
+
+.route-outline,
+.route-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.route-outline {
+  stroke: white;
+  stroke-width: 11;
+}
+
+.route-line {
+  stroke: #1677f2;
+  stroke-width: 6;
+}
+
+.building-pin {
+  fill: #e63946;
+  stroke: white;
+  stroke-width: 3;
+}
